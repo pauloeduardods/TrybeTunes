@@ -1,0 +1,28 @@
+.profile-border {
+  border: 1px solid #93979b;
+}
+
+.profile-image {
+  width: 100%;
+}
+
+.no-display {
+  font-size: 0;
+  opacity: 0;
+}
+
+.form-span {
+  width: 96px;
+}
+
+@media screen and ( max-width : 767px ) {
+
+  .profile-image {
+    width: 250px;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+  }
+}
