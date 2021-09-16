@@ -31,7 +31,7 @@ class Login extends React.Component {
     event.preventDefault();
     this.setState({ loading: true });
     createUser({ name }).then((result) => {
-      this.setState({ redirect: '/search' });
+      this.setState({ redirect: '/TrybeTunes/search' });
       return result === 'OK';
     }).catch(() => false);
   }
