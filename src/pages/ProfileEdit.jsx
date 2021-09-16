@@ -139,7 +139,7 @@ class ProfileEdit extends React.Component {
         className="profile-image rounded-circle"
       />
     );
-    if (redirect) return (<Redirect to="/profile" />);
+    if (redirect) return (<Redirect to="/TrybeTunes/profile" />);
     return (
       <section className="row justify-content-md-center m-4">
         <div className="col-xs-12 col-md-6 border rounded border-dark">

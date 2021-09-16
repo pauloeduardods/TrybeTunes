@@ -37,7 +37,7 @@ class Header extends React.Component {
           <Link
             className="nav-link active"
             aria-current="page"
-            to="/search"
+            to="/TrybeTunes/search"
             data-testid="link-to-search"
           >
             Search
@@ -47,7 +47,7 @@ class Header extends React.Component {
           <Link
             className="nav-link active"
             aria-current="page"
-            to="/favorites"
+            to="/TrybeTunes/favorites"
             data-testid="link-to-favorites"
           >
             Favorites
@@ -57,7 +57,7 @@ class Header extends React.Component {
           <Link
             className="nav-link active"
             aria-current="page"
-            to="/profile"
+            to="/TrybeTunes/profile"
             data-testid="link-to-profile"
           >
             Profile

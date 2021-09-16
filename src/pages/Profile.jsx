@@ -44,7 +44,7 @@ class Profile extends React.Component {
             </div>
             <div className="col-md-2 offset-md-2">
               <Link
-                to="/profile/edit"
+                to="/TrybeTunes/profile/edit"
                 className="edit-profile btn btn-primary fs-6"
               >
                 {gear}
