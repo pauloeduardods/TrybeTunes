@@ -31,7 +31,7 @@ class Login extends React.Component {
     event.preventDefault();
     this.setState({ loading: true });
     createUser({ name }).then((result) => {
-      this.setState({ redirect: '/TrybeTunes/search' });
+      this.setState({ redirect: true });
       return result === 'OK';
     }).catch(() => false);
   }
@@ -67,7 +67,7 @@ class Login extends React.Component {
 
   render() {
     const { redirect, loading } = this.state;
-    if (redirect) return (<Redirect to={ redirect } />);
+    if (redirect) return (<Redirect to={ '/TrybeTunes/search' } />);
     return (
       <div data-testid="page-login" className="container py-4">
         {loading ? <Loading /> : this.loginForm()}
