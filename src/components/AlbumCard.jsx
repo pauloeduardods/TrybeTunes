@@ -14,7 +14,7 @@ class AlbumCard extends React.Component {
     return (
       <div className="col-xs-12 col-sm-6 col-md-4">
         <Link
-          to={ `/TrybeTunes/album/${collectionId}` }
+          to={ `/album/${collectionId}` }
           data-testid={ `link-to-album-${collectionId}` }
           className="card mb-4 border-shadow text-decoration-none text-black link"
         >

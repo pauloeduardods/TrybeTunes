@@ -13,16 +13,16 @@ import Header from './components/Header';
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={ process.env.PUBLIC_URL }>
         <Header />
         <Switch>
-          <Route exact path="/TrybeTunes/" component={ Login } />
-          <Route exact path="/TrybeTunes/search" component={ Search } />
-          <Route path="/TrybeTunes/album/:id" render={ (props) => <Album { ...props } /> } />
-          <Route exact path="/TrybeTunes/favorites" component={ Favorites } />
-          <Route exact path="/TrybeTunes/profile" component={ Profile } />
-          <Route exact path="/TrybeTunes/profile/edit" component={ ProfileEdit } />
-          <Route path="/TrybeTunes/" component={ NotFound } />
+          <Route exact path="/" component={ Login } />
+          <Route exact path="/search" component={ Search } />
+          <Route path="/album/:id" render={ (props) => <Album { ...props } /> } />
+          <Route exact path="/favorites" component={ Favorites } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/profile/edit" component={ ProfileEdit } />
+          <Route path="/" component={ NotFound } />
         </Switch>
       </BrowserRouter>
     );
