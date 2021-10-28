@@ -14,7 +14,7 @@ class Search extends React.Component {
       albums: null,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.searchForm = this.searchForm.bind(this);
   }
 
@@ -26,7 +26,7 @@ class Search extends React.Component {
     }
   }
 
-  onClick(event) {
+  onSubmit(event) {
     event.preventDefault();
     const { search } = this.state;
     this.setState({ search: '', searched: search, loading: true });
@@ -38,7 +38,7 @@ class Search extends React.Component {
   searchForm() {
     const { disabled, search } = this.state;
     return (
-      <form className="input-group mb-3">
+      <form className="input-group mb-3" onSubmit={ this.onSubmit }>
         <input
           type="text"
           name="search"
@@ -52,7 +52,6 @@ class Search extends React.Component {
           type="submit"
           data-testid="search-artist-button"
           disabled={ disabled }
-          onClick={ this.onClick }
           className="col-lg-3 col-xs-4 btn btn-outline-primary"
         >
           Pesquisar

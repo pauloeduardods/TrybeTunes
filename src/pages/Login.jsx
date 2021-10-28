@@ -1,7 +1,7 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
   constructor(props) {
@@ -9,7 +9,6 @@ class Login extends React.Component {
     this.state = {
       name: '',
       loading: false,
-      redirect: null,
       submitDisable: true,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -27,12 +26,12 @@ class Login extends React.Component {
   }
 
   onClick(event) {
+    const { history } = this.props;
     const { name } = this.state;
     event.preventDefault();
     this.setState({ loading: true });
     createUser({ name }).then((result) => {
-      this.setState({ redirect: true });
-      return result === 'OK';
+      history.push('/search');
     }).catch(() => false);
   }
 
@@ -66,8 +65,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { redirect, loading } = this.state;
-    if (redirect) return (<Redirect to={ '/TrybeTunes/search' } />);
+    const { loading } = this.state;
     return (
       <div data-testid="page-login" className="container py-4">
         {loading ? <Loading /> : this.loginForm()}
@@ -75,5 +73,11 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Login;
