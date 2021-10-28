@@ -12,7 +12,7 @@ class Login extends React.Component {
       submitDisable: true,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   handleChange({ target: { name, value } }) {
@@ -25,12 +25,12 @@ class Login extends React.Component {
     }
   }
 
-  onClick(event) {
+  onSubmit(event) {
     const { history } = this.props;
     const { name } = this.state;
     event.preventDefault();
     this.setState({ loading: true });
-    createUser({ name }).then((result) => {
+    createUser({ name }).then(() => {
       history.push('/search');
     }).catch(() => false);
   }
@@ -38,7 +38,7 @@ class Login extends React.Component {
   loginForm() {
     const { submitDisable } = this.state;
     return (
-      <form className="row justify-content-md-center m-4">
+      <form className="row justify-content-md-center m-4" onSubmit={this.onSubmit}>
         <div className="col-xs-12 col-md-6">
           <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">Nome</span>
@@ -54,7 +54,6 @@ class Login extends React.Component {
               type="submit"
               value="Entrar"
               data-testid="login-submit-button"
-              onClick={ this.onClick }
               disabled={ submitDisable }
               className="form-control btn btn-primary"
             />
