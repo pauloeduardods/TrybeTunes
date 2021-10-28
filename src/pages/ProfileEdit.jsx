@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
 import '../css/Profile.css';
@@ -11,7 +11,6 @@ class ProfileEdit extends React.Component {
       loading: true,
       user: {},
       disabled: true,
-      redirect: null,
     };
     this.getUserInfo = this.getUserInfo.bind(this);
     this.editForm = this.editForm.bind(this);
@@ -32,10 +31,12 @@ class ProfileEdit extends React.Component {
 
   onClick(event) {
     const { user } = this.state;
+    const { history } = this.props;
     event.preventDefault();
     this.setState({ loading: true });
     updateUser(user).then(() => {
-      this.setState({ loading: false, redirect: '/profile' });
+      this.setState({ loading: false });
+      history.push('/profile');
     });
   }
 
@@ -130,7 +131,7 @@ class ProfileEdit extends React.Component {
     const { user: { name, image } } = this.state;
     const url = 'https://diaxcapital.com.br/wp-content/uploads/2021/08/circled-user-icon-user-pro-icon-11553397069rpnu1bqqup.png';
     const imageUrl = image === '' ? url : image;
-    const { loading, redirect } = this.state;
+    const { loading } = this.state;
     const profileImage = (
       <img
         src={ imageUrl }
@@ -139,7 +140,6 @@ class ProfileEdit extends React.Component {
         className="profile-image rounded-circle"
       />
     );
-    if (redirect) return (<Redirect to="/TrybeTunes/profile" />);
     return (
       <section className="row justify-content-md-center m-4">
         <div className="col-xs-12 col-md-6 border rounded border-dark">
@@ -159,5 +159,11 @@ class ProfileEdit extends React.Component {
     );
   }
 }
+
+ProfileEdit.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default ProfileEdit;
