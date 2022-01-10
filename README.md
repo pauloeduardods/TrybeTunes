@@ -4,7 +4,7 @@ Link para a aplicação: https://pauloeduardods.github.io/TrybeTunes/
 
 Projeto consistia em fazer uma aplicação em React de um App de musicas tipo o Spotify
 
-<img src=""/>
+<img src="./TrybeTunes.png"/>
 
 
 ## Aprendizados
